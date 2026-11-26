@@ -1,69 +1,35 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>쿨링벡터 디자인 시안 | 나인</title><style>html{color-scheme:light}body{margin:0;background:#f3f4f2;color:#24332d;font-family:"Noto Sans KR",sans-serif}main{width:min(1040px,calc(100% - 28px));margin:24px auto 40px}[hidden]{display:none!important}.switch{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px}.switch button{font:inherit;cursor:pointer;padding:9px 15px;border:1px solid #9ca8a1;background:white;border-radius:5px;color:#26382f}.switch button[aria-pressed=true]{background:#26382f;color:white}button:focus-visible,a:focus-visible{outline:3px solid #aa5835;outline-offset:3px}</style></head><body><main><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@700&amp;family=IBM+Plex+Sans+KR:wght@400;600;700&amp;family=Noto+Sans+KR:wght@400;600;800&amp;display=swap">
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="나인 쿨링벡터. 중대형 사업장을 위한 지붕형·측면형 대용량 배기 시스템. 제품 사양과 설치 상담을 확인하세요.">
+<title>쿨링벡터 | 주식회사 나인</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@700&amp;family=Noto+Sans+KR:wght@400;500;600;700;800&amp;display=swap">
 <style>
-#vector-concepts{--roof:url("roof.jpg");--fan:url("fan.jpg")}
-#vector-concepts .site{min-height:490px;box-sizing:border-box;overflow:hidden;background:var(--paper);color:var(--ink);font:400 15px/1.65 var(--body);word-break:keep-all}
-#vector-concepts .site header{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:17px 6%;border-bottom:1px solid var(--rule)}
-#vector-concepts .site header strong{letter-spacing:.13em}
-#vector-concepts .site nav{display:flex;gap:16px;flex-wrap:wrap;font-size:13px}
-#vector-concepts .site a{color:inherit;text-underline-offset:4px}
-#vector-concepts .copy{padding:26px 8%;align-self:center}
-#vector-concepts .tag{color:var(--accent);font-size:13px;font-weight:700;letter-spacing:.09em;margin:0 0 9px}
-#vector-concepts h2{font:var(--weight,700) clamp(29px,5.7vw,57px)/1.15 var(--title);letter-spacing:-.045em;margin:0 0 13px}
-#vector-concepts p{margin:0 0 18px;max-width:31rem}
-#vector-concepts .action{display:inline-block;background:var(--button);color:var(--button-text);padding:9px 16px;text-decoration:none;font-weight:700;font-size:14px}
-#vector-concepts .photo{background:var(--image,var(--roof)) center/cover}
-#vector-concepts .strip{display:flex;gap:12px 24px;flex-wrap:wrap;border-top:1px solid var(--rule);padding:14px 6%;margin:0;line-height:1.4;font-size:14px}
-#vector-concepts .strip div{display:flex;flex-wrap:wrap;gap:0 8px}
-#vector-concepts dt{font-weight:700} #vector-concepts dd{margin:0}
-#vector-concepts .navy{--paper:#172b36;--ink:#f0f5f4;--rule:#3b555e;--accent:#a8ced0;--button:#bcd9db;--button-text:#152e35;--title:"IBM Plex Sans KR",sans-serif;--body:"IBM Plex Sans KR",sans-serif}
-#vector-concepts .navy .hero{display:grid;grid-template-columns:1.1fr 1fr;min-height:340px}
-#vector-concepts .navy .photo{margin:18px 12% 18px 0;--image:var(--fan)}
-#vector-concepts .olive{--paper:#edf0e7;--ink:#28392d;--rule:#c7cfc2;--accent:#435e49;--button:#385342;--button-text:#f6f5eb;--title:"Gowun Batang",serif;--body:"Noto Sans KR",sans-serif}
-#vector-concepts .olive .hero{display:flex;flex-direction:column;min-height:340px}
-#vector-concepts .olive .copy{text-align:center;padding:22px 6% 15px}
-#vector-concepts .olive .photo{min-height:124px;flex:1;margin:0 6% 15px;background-position:center 55%;border-radius:18px 18px 5px 5px}
-#vector-concepts .olive .action{border-radius:999px}
-#vector-concepts .stone{--paper:#f2eee9;--ink:#352d29;--rule:#d9cec5;--accent:#794d3d;--button:#6b4437;--button-text:#fff6ee;--title:"Noto Sans KR",sans-serif;--body:"Noto Sans KR",sans-serif;--weight:800}
-#vector-concepts .stone .hero{display:grid;grid-template-columns:.88fr 1fr;min-height:340px}
-#vector-concepts .stone .photo{grid-column:1;grid-row:1;--image:var(--fan);margin:20px 0 20px 13%}
-#vector-concepts .stone .copy{padding:25px 11%}
-#vector-concepts .stone .strip{background:#e8ded4}
-@media(max-width:570px){
-  #vector-concepts .site{min-height:545px}
-  #vector-concepts .site header{flex-wrap:wrap}
-  #vector-concepts .navy .hero,#vector-concepts .stone .hero{display:flex;flex-direction:column}
-  #vector-concepts .navy .copy,#vector-concepts .stone .copy{align-self:stretch;padding:20px 6%}
-  #vector-concepts .navy .photo,#vector-concepts .stone .photo{min-height:145px;margin:0 6% 12px}
-  #vector-concepts .stone .photo{order:-1;margin-top:12px}
-}
+:root{color-scheme:light;--ink:#223129;--secondary:#526058;--sage:#e6ede4;--line:#d8dfd7;--forest:#30493b;--white:#fff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--white);color:var(--ink);font:400 16px/1.65 "Noto Sans KR",sans-serif;word-break:keep-all}a{color:inherit;text-decoration:none}a:focus-visible{outline:3px solid #768d73;outline-offset:5px}img{display:block;width:100%}h1,h2,h3,p,figure,dl,dd{margin:0}
+.shell{width:min(1240px,calc(100% - 64px));margin-inline:auto}.top{background:white;border-bottom:1px solid #edf0ec}.top .shell{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:24px}.mark{display:inline-block;font-size:27px;line-height:1;font-weight:800;letter-spacing:.14em}.mark::after{content:"";display:block;width:25px;height:3px;margin-top:7px;background:#819980}.top nav{display:flex;align-items:center;flex-wrap:wrap;gap:clamp(12px,3vw,33px);font-size:14px;font-weight:600}.top nav a:hover,.plain:hover{text-decoration:underline;text-underline-offset:5px}
+.hero{display:grid;grid-template-columns:minmax(0,.93fr) minmax(0,1.07fr);align-items:center;gap:clamp(25px,6vw,94px);padding-block:clamp(28px,4.7vw,72px)}.hero-copy{padding-left:clamp(0px,2vw,25px)}.eyebrow{color:#486250;font-size:14px;font-weight:700;margin-bottom:13px}.hero h1{font-size:clamp(47px,7vw,108px);line-height:1.08;letter-spacing:-.08em}.hero .lead{font-family:"Gowun Batang",serif;font-size:clamp(20px,2.6vw,34px);font-weight:700;margin:17px 0 10px}.hero .desc{max-width:33rem;color:var(--secondary);font-size:clamp(16px,1.55vw,19px)}.actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:26px}.pill{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:9px 19px;border-radius:999px;border:1px solid var(--forest);font-size:15px;font-weight:700}.pill.primary{background:var(--forest);color:white}.pill.primary:hover{background:#223a2e}.pill.secondary:hover{background:var(--sage)}.hero figure{padding:clamp(10px,1.65vw,24px);background:var(--sage);border-radius:26px}.hero figure img{aspect-ratio:1.19;object-fit:cover;object-position:center 42%;border-radius:15px}.hero figcaption{font-size:13px;color:#45574b;padding:8px 3px 0}
+.facts{border-block:1px solid var(--line);padding:20px 0}.facts dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.facts dl>div{padding-left:18px;border-left:1px solid var(--line)}.facts dt{color:var(--secondary);font-size:14px}.facts dd{font-weight:800;font-size:clamp(18px,2.65vw,30px);letter-spacing:-.04em}
+section[id]{scroll-margin-top:20px}.section{padding-block:clamp(40px,6vw,82px)}h2{font-size:clamp(28px,3.8vw,49px);line-height:1.2;letter-spacing:-.06em;margin-bottom:16px}.models{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.model{padding:clamp(17px,3vw,32px);background:#f3f6f2;border:1px solid #e4eae1;border-radius:18px}.model h3{font-size:22px;margin-bottom:8px}.model p{color:var(--secondary)}.details{display:inline-block;margin-top:16px;font-weight:700;color:var(--forest);text-decoration:underline;text-underline-offset:5px}
+.field{background:#f0f4ef}.field .shell{display:grid;grid-template-columns:1fr .8fr;align-items:center;gap:clamp(18px,5vw,65px)}.field img{aspect-ratio:1.65;object-fit:cover;object-position:center 52%;border-radius:18px}.field p{color:var(--secondary)}.contact .shell{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}.contact .actions{margin:0}.contact p{color:var(--secondary)}footer{padding:22px 0;border-top:1px solid var(--line);font-size:14px;color:var(--secondary)}
+@media(max-width:720px){.shell{width:calc(100% - 32px)}.top .shell{min-height:64px;gap:12px}.top nav{column-gap:12px;font-size:13px}.mark{font-size:22px}.hero{grid-template-columns:1fr;gap:23px}.hero-copy{padding:0}.hero figure{border-radius:18px}.hero figure img{aspect-ratio:1.3}.facts dl{gap:10px}.facts dl>div{padding-left:8px}.facts dt{font-size:12px}.facts dd{font-size:16px}.field .shell{grid-template-columns:1fr}.field img{aspect-ratio:1.8}}
+@media(max-width:390px){.models{grid-template-columns:1fr}.top nav{column-gap:8px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
-<div id="vector-concepts">
-  <div class="switch" role="group" aria-label="디자인 시안 선택"><button type="button" aria-pressed="true">딥 네이비</button><button type="button" aria-pressed="false">세이지</button><button type="button" aria-pressed="false">웜 스톤</button></div>
-  <div class="viz-carousel viz-dotted-background" aria-label="쿨링벡터 기업용 사이트 디자인 시안" data-previous-label="이전 시안" data-next-label="다음 시안">
-    <section class="site navy" data-variant="딥 네이비 · 기술 중심" aria-label="딥 네이비, IBM Plex Sans KR">
-      <header><strong>NAIN</strong><nav aria-label="메뉴"><a href="https://nain.team/home/c/Cat02/Cat02_3">제품 사양</a><a href="tel:0413551195">도입 문의</a></nav></header>
-      <div class="hero">
-        <div class="copy"><p class="tag">쿨링벡터 · 기업용 환기</p><h2>현장에 맞춰 설계하는<br>공장 환기</h2><p>작업장의 열과 오염 공기를 배출하는 산업용 환기 시스템입니다.</p><a class="action" href="tel:0413551195">현장 도입 문의</a></div>
-        <div class="photo" role="img" aria-label="벡터 배기팬 설치 사진"></div>
-      </div>
-      <dl class="strip"><div><dt>최대 풍량</dt><dd>42,000 m³/h</dd></div><div><dt>소비전력</dt><dd>1.5 kW</dd></div><div><dt>설치형</dt><dd>지붕형 · 측면형</dd></div></dl>
-    </section>
-    <section class="site olive" data-variant="세이지 · 현장 중심" aria-label="세이지, 고운바탕과 Noto Sans KR" hidden>
-      <header><strong>NAIN</strong><nav aria-label="메뉴"><a href="https://nain.team/home/c/Cat02/Cat02_3">제품 사양</a><a href="tel:0413551195">도입 문의</a></nav></header>
-      <div class="hero">
-        <div class="copy"><p class="tag">쿨링벡터 · 기업용 환기</p><h2>일하는 공간에<br>더 편안한 공기를</h2><p>공장 구조와 작업 환경에 맞춰 지붕형과 측면형 배기를 검토하세요.</p><a class="action" href="tel:0413551195">설치 상담</a></div>
-        <div class="photo" role="img" aria-label="공장 지붕 배기 시스템 설치 사진"></div>
-      </div>
-      <dl class="strip"><div><dt>최대 풍량</dt><dd>42,000 m³/h</dd></div><div><dt>소비전력</dt><dd>1.5 kW</dd></div><div><dt>설치형</dt><dd>지붕형 · 측면형</dd></div></dl>
-    </section>
-    <section class="site stone" data-variant="웜 스톤 · 제품 중심" aria-label="웜 스톤, Noto Sans KR" hidden>
-      <header><strong>NAIN</strong><nav aria-label="메뉴"><a href="https://nain.team/home/c/Cat02/Cat02_3">제품 사양</a><a href="tel:0413551195">도입 문의</a></nav></header>
-      <div class="hero">
-        <div class="copy"><p class="tag">나인 산업용 환기</p><h2>쿨링벡터</h2><p>중대형 공장을 위한 대용량 배기 시스템. 현장 조건에 맞는 모델과 설치 위치를 확인하세요.</p><a class="action" href="https://nain.team/home/c/Cat02/Cat02_3">모델 비교하기</a></div>
-        <div class="photo" role="img" aria-label="벡터 배기팬 설치 사진"></div>
-      </div>
-      <dl class="strip"><div><dt>최대 풍량</dt><dd>42,000 m³/h</dd></div><div><dt>소비전력</dt><dd>1.5 kW</dd></div><div><dt>설치형</dt><dd>지붕형 · 측면형</dd></div></dl>
-    </section>
-  </div>
-</div></main><script>const choices=[...document.querySelectorAll(".switch button")];const concepts=[...document.querySelectorAll("[data-variant]")];choices.forEach((button,index)=>button.addEventListener("click",()=>{choices.forEach((item,i)=>item.setAttribute("aria-pressed",String(i===index)));concepts.forEach((concept,i)=>{concept.hidden=i!==index;});}));</script></body></html>
+</head>
+<body>
+<header class="top"><div class="shell"><a class="mark" href="./" aria-label="나인 쿨링벡터 홈">NAIN</a><nav aria-label="주 메뉴"><a href="#product">제품 사양</a><a href="#field">설치 현장</a><a href="#contact">도입 문의</a></nav></div></header>
+<main>
+<section class="hero shell" aria-labelledby="intro"><div class="hero-copy"><p class="eyebrow">기업용 환기 솔루션</p><h1 id="intro">쿨링벡터</h1><p class="lead">작업장의 열기를 밖으로.</p><p class="desc">중대형 사업장의 열과 실내 공기를 배출하는 대용량 환기 시스템입니다.</p><div class="actions"><a class="pill primary" href="#contact">도입 문의</a><a class="pill secondary" href="#product">제품 사양 보기</a></div></div><figure><img src="fan.jpg" width="1000" height="1333" fetchpriority="high" alt="현장에 설치된 쿨링벡터 배기팬 정면"><figcaption>벡터 배기팬 설치 사진</figcaption></figure></section>
+<div class="facts"><dl class="shell" aria-label="주요 제품 사양"><div><dt>최대 풍량</dt><dd>42,000 m³/h</dd></div><div><dt>소비전력</dt><dd>1.5 kW</dd></div><div><dt>설치 방식</dt><dd>지붕형 · 측면형</dd></div></dl></div>
+<section class="section shell" id="product"><h2>설치 위치에 맞는 벡터</h2><div class="models"><article class="model"><h3>Vector 1 · 지붕형</h3><p>지붕에 설치하는 대용량 배기팬입니다.</p></article><article class="model"><h3>Vector 2 · 측면형</h3><p>건물 측면에 설치하는 대용량 배기팬입니다.</p></article></div><a class="details" href="https://nain.team/home/c/Cat02/Cat02_3">나인 공식 상세 사양</a></section>
+<section class="section field" id="field"><div class="shell"><img src="roof.jpg" loading="lazy" alt="공장 지붕에 시공된 벡터 배기 설비"><div><h2>실제 설치 현장</h2><p>기존 설비와 건물 구조에 따라 배기팬의 위치와 설치 방식을 검토할 수 있습니다.</p></div></div></section>
+<section class="section contact" id="contact"><div class="shell"><div><h2>기업 도입 상담</h2><p>현장 용도와 설치 예정 위치를 알려주세요.</p></div><div class="actions"><a class="pill primary" href="tel:0413551195">041-355-1195</a><a class="pill secondary" href="mailto:nain@nain.team">이메일 문의</a></div></div></section>
+</main>
+<footer><div class="shell">주식회사 나인 · <a class="plain" href="https://nain.team/">회사 공식 사이트</a></div></footer>
+</body>
+</html>
