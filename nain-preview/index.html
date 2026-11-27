@@ -1,9 +1,74 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>나인 | 첫 화면 시안</title><style>html,body{margin:0;background:white}#nain-logo-first{min-height:100vh}</style></head><body><style>
-#nain-logo-first{min-height:360px;background:#fff;box-sizing:border-box}
-#nain-logo-first header{display:flex;align-items:center;min-height:78px;padding-inline:clamp(18px,5vw,52px);border-top:4px solid #707b52;border-bottom:1px solid #e9ece3}
-#nain-logo-first img{display:block;width:clamp(150px,25vw,225px);height:auto}
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="쿨윈의 냉방 급기와 벡터의 배기를 한 시스템으로 연결하는 나인의 기업용 스마트 환기 솔루션.">
+<title>나인 | 쿨윈·벡터 스마트 환기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&amp;display=swap">
+<style>
+:root{color-scheme:dark;--navy:#0e1b2d;--light:#f6f9ff;--muted:#c4d0e2;--line:#73839b}*{box-sizing:border-box}body{margin:0;background:var(--navy);color:var(--light);font:16px/1.6 "Noto Sans KR",sans-serif;word-break:keep-all}a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}a:focus-visible,button:focus-visible{outline:3px solid #a6c8ff;outline-offset:4px}.shell{width:min(1240px,calc(100% - 80px));margin-inline:auto}
+header{position:relative;z-index:1;background:var(--navy);border-bottom:1px solid #ffffff20}.bar{min-height:79px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{padding:8px 12px;border-radius:5px;background:#fff;display:inline-flex}.brand img{display:block;width:144px;height:auto}.bar nav{display:flex;gap:clamp(14px,3vw,36px);align-items:center;font-size:14px}.bar a:hover,.original:hover{text-decoration:underline;text-underline-offset:4px}
+.hero{position:relative;isolation:isolate;display:flex;min-height:clamp(520px,calc(100svh - 79px),845px);align-items:center;overflow:hidden;background:#101d2e}.picture,.shade{position:absolute;inset:0;pointer-events:none}.picture{overflow:hidden;container-type:size;background:#101d2e url("../cooling-vector/roof.jpg") center 46%/cover no-repeat;z-index:-2}.picture iframe{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border:0;width:max(100%,177.778cqh);height:max(100%,56.25cqw);opacity:0;transition:opacity .8s ease}.picture iframe.is-playing{opacity:1}.shade{z-index:-1;background:linear-gradient(90deg,rgba(8,19,35,.93) 0%,rgba(9,21,38,.65) 46%,rgba(10,22,38,.18) 100%),linear-gradient(0deg,rgba(8,17,31,.8),transparent 42%)}
+.copy{padding-block:100px 118px}.eyebrow{margin:0 0 16px;color:#b9d2f8;font-size:14px;font-weight:700}.copy h1{margin:0;font-weight:800;font-size:clamp(38px,6.4vw,94px);line-height:1.1;letter-spacing:-.085em}.copy .lead{margin:22px 0 0;color:#eff4fc;max-width:37rem;font-size:clamp(16px,1.7vw,22px)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}.action{min-height:46px;display:inline-flex;align-items:center;justify-content:center;padding:9px 19px;border:1px solid #c3d3ec;border-radius:5px;font-size:15px;font-weight:700}.action.primary{background:#e5efff;color:#172a45;border-color:#e5efff}.action:hover{box-shadow:0 0 0 1px currentColor}
+.media-actions{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);display:flex;justify-content:flex-end;align-items:center;gap:13px;flex-wrap:wrap;color:#e8f0ff;font-size:13px}.media-actions button{color:inherit;background:#0e1b2de8;border:1px solid #a7b8d0;padding:6px 11px;border-radius:4px}.media-actions button:disabled{cursor:default;opacity:.6}.original{text-underline-offset:4px}
+@media(max-width:680px){.shell{width:calc(100% - 36px)}.bar{min-height:64px}.brand img{width:112px}.bar nav{font-size:13px;gap:13px}.hero{min-height:max(610px,calc(100svh - 64px));align-items:end}.shade{background:linear-gradient(0deg,rgba(8,17,31,.97) 4%,rgba(8,19,34,.79) 41%,rgba(10,22,38,.2) 85%)}.copy{padding-block:150px 93px}.media-actions{justify-content:flex-start;bottom:15px}}
+@media(prefers-reduced-motion:reduce){.picture iframe{transition:none}}
 </style>
-<div id="nain-logo-first" aria-label="나인 사이트 첫 화면 시안">
-  <header><img src="data:image/png;base64,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" alt="Nain 주식회사 나인"></header>
-</div></body></html>
+</head>
+<body>
+<header><div class="bar shell"><a class="brand" href="./" aria-label="주식회사 나인 홈"><img src="../assets/logo.png" alt="Nain 주식회사 나인" width="183" height="34"></a><nav aria-label="주 메뉴"><a href="../cooling-vector/">제품 소개</a><a href="tel:0413551195">도입 문의</a></nav></div></header>
+<main>
+<section class="hero" aria-labelledby="main-title">
+<div class="picture" aria-hidden="true"><div id="film"></div></div><div class="shade"></div>
+<div class="copy shell"><p class="eyebrow">쿨윈 · 벡터 스마트 환기</p><h1 id="main-title">작업장에<br>공기의 길을 열다</h1><p class="lead">쿨윈이 바깥 공기를 식혀 들이고, 벡터가 작업장의 열기를 밖으로 내보냅니다.</p><div class="actions"><a class="action primary" href="../cooling-vector/">제품 소개</a><a class="action" href="tel:0413551195">현장 도입 문의</a></div></div>
+<div class="media-actions shell"><button type="button" id="playback" disabled>영상 재생</button><a class="original" href="https://www.youtube.com/watch?v=OHTJ2a3ogHE">YouTube 원본 보기</a></div>
+</section>
+</main>
+<script>
+const toggle=document.querySelector('#playback');
+const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)');
+const videoId='OHTJ2a3ogHE';
+let player;
+let playing=false;
+function showPlayback(active){
+  playing=active;
+  player.getIframe().classList.toggle('is-playing',active);
+  toggle.textContent=active?'영상 일시정지':'영상 재생';
+}
+window.onYouTubeIframeAPIReady=()=>{
+  player=new YT.Player('film',{
+    host:'https://www.youtube-nocookie.com',
+    videoId,
+    playerVars:{autoplay:0,controls:0,loop:1,playlist:videoId,playsinline:1,rel:0,origin:location.origin},
+    events:{
+      onReady:({target})=>{
+        const iframe=target.getIframe();
+        iframe.tabIndex=-1;
+        iframe.setAttribute('title','나인 쿨윈·벡터 배경 영상');
+        iframe.setAttribute('allow','autoplay; encrypted-media');
+        target.mute();
+        if(target.getAvailablePlaybackRates().includes(0.75)) target.setPlaybackRate(0.75);
+        toggle.disabled=false;
+        if(!reduceMotion.matches)target.playVideo();
+      },
+      onStateChange:({data})=>{
+        if(data===YT.PlayerState.PLAYING)showPlayback(true);
+        if(data===YT.PlayerState.PAUSED||data===YT.PlayerState.ENDED)showPlayback(false);
+      },
+      onError:()=>{showPlayback(false);toggle.hidden=true;}
+    }
+  });
+};
+toggle.addEventListener('click',()=>{
+  if(playing)player.pauseVideo();
+  else player.playVideo();
+});
+const api=document.createElement('script');
+api.src='https://www.youtube.com/iframe_api';
+api.addEventListener('error',()=>{toggle.hidden=true;});
+document.head.append(api);
+</script>
+</body></html>
