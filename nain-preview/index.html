@@ -11,64 +11,196 @@
 <style>
 :root{color-scheme:dark;--navy:#0e1b2d;--light:#f6f9ff;--muted:#c4d0e2;--line:#73839b}*{box-sizing:border-box}body{margin:0;background:var(--navy);color:var(--light);font:16px/1.6 "Noto Sans KR",sans-serif;word-break:keep-all}a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}a:focus-visible,button:focus-visible{outline:3px solid #a6c8ff;outline-offset:4px}.shell{width:min(1240px,calc(100% - 80px));margin-inline:auto}
 header{position:relative;z-index:1;background:var(--navy);border-bottom:1px solid #ffffff20}.bar{min-height:79px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{padding:8px 12px;border-radius:5px;background:#fff;display:inline-flex}.brand img{display:block;width:144px;height:auto}.bar nav{display:flex;gap:clamp(14px,3vw,36px);align-items:center;font-size:14px}.bar a:hover,.original:hover{text-decoration:underline;text-underline-offset:4px}
-.hero{position:relative;isolation:isolate;display:flex;min-height:clamp(520px,calc(100svh - 79px),845px);align-items:center;overflow:hidden;background:#101d2e}.picture,.shade{position:absolute;inset:0;pointer-events:none}.picture{overflow:hidden;container-type:size;background:#101d2e url("../cooling-vector/roof.jpg") center 46%/cover no-repeat;z-index:-2}.picture iframe{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border:0;width:max(100%,177.778cqh);height:max(100%,56.25cqw);opacity:0;transition:opacity .8s ease}.picture iframe.is-playing{opacity:1}.shade{z-index:-1;background:linear-gradient(90deg,rgba(8,19,35,.93) 0%,rgba(9,21,38,.65) 46%,rgba(10,22,38,.18) 100%),linear-gradient(0deg,rgba(8,17,31,.8),transparent 42%)}
+.hero{position:relative;isolation:isolate;display:flex;min-height:clamp(520px,calc(100svh - 79px),845px);align-items:center;overflow:hidden;background:#101d2e}.picture,.shade{position:absolute;inset:0;pointer-events:none}.picture{overflow:hidden;container-type:size;background:#101d2e url("../cooling-vector/roof.jpg") center 46%/cover no-repeat;z-index:-2}.shade{z-index:-1;background:linear-gradient(90deg,rgba(8,19,35,.93) 0%,rgba(9,21,38,.65) 46%,rgba(10,22,38,.18) 100%),linear-gradient(0deg,rgba(8,17,31,.8),transparent 42%)}
 .copy{padding-block:100px 118px}.eyebrow{margin:0 0 16px;color:#b9d2f8;font-size:14px;font-weight:700}.copy h1{margin:0;font-weight:800;font-size:clamp(38px,6.4vw,94px);line-height:1.1;letter-spacing:-.085em}.copy .lead{margin:22px 0 0;color:#eff4fc;max-width:37rem;font-size:clamp(16px,1.7vw,22px)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}.action{min-height:46px;display:inline-flex;align-items:center;justify-content:center;padding:9px 19px;border:1px solid #c3d3ec;border-radius:5px;font-size:15px;font-weight:700}.action.primary{background:#e5efff;color:#172a45;border-color:#e5efff}.action:hover{box-shadow:0 0 0 1px currentColor}
 .media-actions{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);display:flex;justify-content:flex-end;align-items:center;gap:13px;flex-wrap:wrap;color:#e8f0ff;font-size:13px}.media-actions button{color:inherit;background:#0e1b2de8;border:1px solid #a7b8d0;padding:6px 11px;border-radius:4px}.media-actions button:disabled{cursor:default;opacity:.6}.original{text-underline-offset:4px}
 @media(max-width:680px){.shell{width:calc(100% - 36px)}.bar{min-height:64px}.brand img{width:112px}.bar nav{font-size:13px;gap:13px}.hero{min-height:max(610px,calc(100svh - 64px));align-items:end}.shade{background:linear-gradient(0deg,rgba(8,17,31,.97) 4%,rgba(8,19,34,.79) 41%,rgba(10,22,38,.2) 85%)}.copy{padding-block:150px 93px}.media-actions{justify-content:flex-start;bottom:15px}}
-@media(prefers-reduced-motion:reduce){.picture iframe{transition:none}}
+
+.picture{background:#101e33}.picture canvas{display:block;width:100%;height:100%}.shade{background:linear-gradient(90deg,#0a1628f7 0%,#0a1628d9 32%,#0a16284d 59%,transparent 83%),linear-gradient(0deg,#0a1628d9,transparent 30%)}.airflow-caption{display:flex;align-items:center;gap:8px 12px;flex-wrap:wrap;margin-right:auto;color:#eaf3ff}.airflow-caption strong{font-size:15px}.airflow-number{color:#91cef1;font-weight:700}.airflow-caption span:last-child{color:#c7d8e9}.media-actions{justify-content:space-between}.media-actions button{flex-shrink:0}@media(max-width:680px){.shade{background:linear-gradient(0deg,#0a1628 0%,#0a1628e6 37%,#0a162844 64%,transparent 83%)}.copy{padding-bottom:125px}.airflow-caption{column-gap:8px}.airflow-caption span:last-child{flex-basis:100%}.media-actions{flex-wrap:nowrap}}
 </style>
 </head>
 <body>
 <header><div class="bar shell"><a class="brand" href="./" aria-label="주식회사 나인 홈"><img src="../assets/logo.png" alt="Nain 주식회사 나인" width="183" height="34"></a><nav aria-label="주 메뉴"><a href="../cooling-vector/">제품 소개</a><a href="tel:0413551195">도입 문의</a></nav></div></header>
 <main>
 <section class="hero" aria-labelledby="main-title">
-<div class="picture" aria-hidden="true"><div id="film"></div></div><div class="shade"></div>
+<div class="picture" aria-hidden="true"><canvas id="airflow"></canvas></div><div class="shade"></div>
 <div class="copy shell"><p class="eyebrow">쿨윈 · 벡터 스마트 환기</p><h1 id="main-title">작업장에<br>공기의 길을 열다</h1><p class="lead">쿨윈이 바깥 공기를 식혀 들이고, 벡터가 작업장의 열기를 밖으로 내보냅니다.</p><div class="actions"><a class="action primary" href="../cooling-vector/">제품 소개</a><a class="action" href="tel:0413551195">현장 도입 문의</a></div></div>
-<div class="media-actions shell"><button type="button" id="playback" disabled>영상 재생</button><a class="original" href="https://www.youtube.com/watch?v=OHTJ2a3ogHE">YouTube 원본 보기</a></div>
+<div class="media-actions shell"><div class="airflow-caption"><span class="airflow-number">01</span><strong>쿨윈 냉방 급기</strong><span>외기를 식혀 작업장 안으로 공급</span></div><button type="button" id="playback">영상 일시정지</button></div>
 </section>
 </main>
 <script>
-const toggle=document.querySelector('#playback');
-const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)');
-const videoId='OHTJ2a3ogHE';
-let player;
-let playing=false;
-function showPlayback(active){
-  playing=active;
-  player.getIframe().classList.toggle('is-playing',active);
-  toggle.textContent=active?'영상 일시정지':'영상 재생';
+const canvas = document.querySelector('#airflow');
+const context = canvas.getContext('2d');
+const toggle = document.querySelector('#playback');
+const stage = document.querySelector('.picture');
+const preference = matchMedia('(prefers-reduced-motion: reduce)');
+const steps = [
+  ['01', '쿨윈 냉방 급기', '외기를 식혀 작업장 안으로 공급'],
+  ['02', '벡터 열기 배출', '실내 상부로 올라온 열기를 외부로 배출'],
+  ['03', '스마트 제어', '온도·습도·실내압에 따라 급기와 배기 조절']
+];
+const readout = document.querySelector('.airflow-caption');
+const cold = [[-2.6,3.0,.7],[-.3,3,.7],[2.4,2.8,.7],[4.9,2.8,1],[7.6,2.8,1]];
+const warm = [[3.4,3.3,.65],[4.4,3.4,1.1],[6.45,3.5,2.2],[6.45,3.5,3.65],[6.45,3.5,5.8]];
+let width, height, scale, originX, originY;
+let elapsed = 0, previous = 0, request = 0, lastStep = -1;
+let paused = preference.matches;
+
+function project([x,y,z]) {
+  return [originX + (x - y) * scale, originY + (x + y) * scale * .43 - z * scale];
 }
-window.onYouTubeIframeAPIReady=()=>{
-  player=new YT.Player('film',{
-    host:'https://www.youtube-nocookie.com',
-    videoId,
-    playerVars:{autoplay:0,controls:0,loop:1,playlist:videoId,playsinline:1,rel:0,origin:location.origin},
-    events:{
-      onReady:({target})=>{
-        const iframe=target.getIframe();
-        iframe.tabIndex=-1;
-        iframe.setAttribute('title','나인 쿨윈·벡터 배경 영상');
-        iframe.setAttribute('allow','autoplay; encrypted-media');
-        target.mute();
-        if(target.getAvailablePlaybackRates().includes(0.75)) target.setPlaybackRate(0.75);
-        toggle.disabled=false;
-        if(!reduceMotion.matches)target.playVideo();
-      },
-      onStateChange:({data})=>{
-        if(data===YT.PlayerState.PLAYING)showPlayback(true);
-        if(data===YT.PlayerState.PAUSED||data===YT.PlayerState.ENDED)showPlayback(false);
-      },
-      onError:()=>{showPlayback(false);toggle.hidden=true;}
-    }
+
+function trace(points) {
+  context.beginPath();
+  points.forEach((point,index) => context[index ? 'lineTo' : 'moveTo'](...project(point)));
+}
+
+function polygon(points, fill, stroke = '#7fa6c34d') {
+  trace(points);
+  context.closePath();
+  context.fillStyle = fill;
+  context.fill();
+  context.strokeStyle = stroke;
+  context.lineWidth = 1;
+  context.stroke();
+}
+
+function line(points, color, weight = 1) {
+  trace(points);
+  context.strokeStyle = color;
+  context.lineWidth = weight;
+  context.stroke();
+}
+
+function box(x,y,z,w,d,h,colors) {
+  polygon([[x,y+d,z],[x+w,y+d,z],[x+w,y+d,z+h],[x,y+d,z+h]],colors[0]);
+  polygon([[x+w,y,z],[x+w,y+d,z],[x+w,y+d,z+h],[x+w,y,z+h]],colors[1]);
+  polygon([[x,y,z+h],[x+w,y,z+h],[x+w,y+d,z+h],[x,y+d,z+h]],colors[2]);
+}
+
+function drawBuilding() {
+  polygon([[0,0,0],[10,0,0],[10,6.6,0],[0,6.6,0]], '#213b54');
+  polygon([[0,0,0],[10,0,0],[10,0,3.3],[0,0,3.3]], '#25445c');
+  polygon([[0,0,0],[0,6.6,0],[0,6.6,3.3],[0,0,3.3]], '#18334b');
+  for(let x=1;x<10;x++) line([[x,0,0],[x,6.6,0]],'#5e82982c');
+  for(let y=1;y<7;y++) line([[0,y,0],[10,y,0]],'#5e82982c');
+  for(let x=.7;x<9.8;x+=1.05) {
+    line([[x,0,0],[x,0,3.3]],'#8cacbd50',2);
+    polygon([[x+.12,.02,2],[x+.83,.02,2],[x+.83,.02,2.72],[x+.12,.02,2.72]],'#699ab48c','#9ec4d25c');
+  }
+  line([[0,0,3.3],[10,0,3.3],[10,6.6,3.3],[0,6.6,3.3],[0,0,3.3]],'#a0bbce64');
+  for(let x=0;x<=10;x+=2) line([[x,0,3.3],[x,6.6,3.3]],'#829db34b');
+  [[2.1,3.8],[4.8,4.6],[7.3,3.8]].forEach(([x,y])=>{
+    box(x,y,0,1.3,.85,.67,['#253d50','#152b40','#56758a']);
+    box(x+.18,y+.14,.67,.9,.57,.15,['#364e60','#223a4f','#819ca9']);
   });
-};
-toggle.addEventListener('click',()=>{
-  if(playing)player.pauseVideo();
-  else player.playVideo();
-});
-const api=document.createElement('script');
-api.src='https://www.youtube.com/iframe_api';
-api.addEventListener('error',()=>{toggle.hidden=true;});
-document.head.append(api);
+  box(-2,2.22,0,1.6,1.46,1.55,['#42657d','#284c67','#819fab']);
+  for(let i=0;i<6;i++) line([[-1.86,3.69,.3+i*.18],[-.56,3.69,.3+i*.18]],'#163c53',2);
+  box(5.68,2.69,3.3,1.55,1.55,.25,['#476878','#325365','#9bb4b9']);
+  box(5.91,2.95,3.55,1.05,1.05,.72,['#567786','#355c6c','#829eaa']);
+  for(let i=0;i<4;i++) line([[6.01,4.01,3.68+i*.14],[6.87,4.01,3.68+i*.14]],'#203a4f',1.5);
+}
+
+function drawnPath(points, color, strength, offset) {
+  const screen = points.map(project);
+  const lengths = screen.slice(1).map((point,i)=>Math.hypot(point[0]-screen[i][0],point[1]-screen[i][1]));
+  const total = lengths.reduce((sum,length)=>sum+length,0);
+  context.save();
+  context.globalAlpha = strength * .34;
+  context.setLineDash([5,8]);
+  line(points,color,1.4);
+  context.setLineDash([]);
+  context.globalAlpha = strength;
+  context.shadowColor = color;
+  context.shadowBlur = 11;
+  context.fillStyle = color;
+  for(let i=0;i<16;i++) {
+    let distance = ((elapsed / 5100 + i / 16 + offset) % 1) * total;
+    let segment = 0;
+    while(segment < lengths.length - 1 && distance > lengths[segment]) distance -= lengths[segment++];
+    const a=screen[segment], b=screen[segment+1], t=distance/lengths[segment];
+    const x=a[0]+(b[0]-a[0])*t, y=a[1]+(b[1]-a[1])*t;
+    context.beginPath();
+    context.arc(x,y,i%4===0?3.2:1.8,0,Math.PI*2);
+    context.fill();
+  }
+  context.restore();
+}
+
+function markers() {
+  const pulse=(elapsed%2200)/2200;
+  [[1,1,2.8],[9,1,2.8],[6.45,3.5,4.35]].forEach(point=>{
+    const [x,y]=project(point);
+    context.beginPath();
+    context.arc(x,y,7+pulse*13,0,Math.PI*2);
+    context.strokeStyle='rgba(168,216,255,'+(1-pulse)*.62+')';
+    context.stroke();
+    context.beginPath();
+    context.arc(x,y,3.5,0,Math.PI*2);
+    context.fillStyle='#d5eeff';
+    context.fill();
+  });
+}
+
+function paint(time) {
+  if(!paused && previous)elapsed+=(time-previous);
+  previous=time;
+  const step=Math.floor((elapsed%15000)/5000);
+  if(step!==lastStep){
+    readout.querySelector('.airflow-number').textContent=steps[step][0];
+    readout.querySelector('strong').textContent=steps[step][1];
+    readout.querySelector('span:last-child').textContent=steps[step][2];
+    lastStep=step;
+  }
+  context.clearRect(0,0,width,height);
+  const glow=context.createRadialGradient(originX,originY,0,originX,originY,width*.62);
+  glow.addColorStop(0,'#2c506b');
+  glow.addColorStop(1,'#101e33');
+  context.fillStyle=glow;
+  context.fillRect(0,0,width,height);
+  context.lineJoin='round';
+  context.lineCap='round';
+  for(let n=-10;n<=20;n++){
+    line([[n,-11,-.25],[n,18,-.25]],'#6686a322');
+    line([[-10,n,-.25],[19,n,-.25]],'#6686a322');
+  }
+  drawBuilding();
+  drawnPath(cold,'#6ce4ff',step===1?.24:1,0);
+  drawnPath(warm,'#ffc18a',step===0?.24:1,.21);
+  if(step===2)markers();
+  request=paused?0:requestAnimationFrame(paint);
+}
+
+function resize() {
+  const bounds=stage.getBoundingClientRect();
+  width=bounds.width;
+  height=bounds.height;
+  const density=Math.min(devicePixelRatio||1,3);
+  canvas.width=Math.round(width*density);
+  canvas.height=Math.round(height*density);
+  context.setTransform(density,0,0,density,0,0);
+  const compact=width<681;
+  scale=Math.min(width/(compact?24:27),height/(compact?18:14));
+  originX=width*(compact?.47:.61);
+  originY=height*(compact?.28:.49);
+  if(paused)paint(performance.now());
+}
+
+function updateMotion() {
+  toggle.textContent=paused?'영상 재생':'영상 일시정지';
+  if(paused){
+    cancelAnimationFrame(request);
+    request=0;
+  }else if(!request){
+    previous=0;
+    request=requestAnimationFrame(paint);
+  }
+}
+
+toggle.addEventListener('click',()=>{paused=!paused;updateMotion();});
+preference.addEventListener('change',({matches})=>{paused=matches;updateMotion();});
+new ResizeObserver(resize).observe(stage);
+resize();
+updateMotion();
 </script>
 </body></html>
