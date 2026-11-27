@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>나인 | 네이비 영상 시안 2종</title>
+<style>
+:root{color-scheme:dark;--navy:#101d30;--panel:#192b43;--white:#f7f9ff;--muted:#bfccdf;--line:#415671}
+*{box-sizing:border-box}body{margin:0;background:var(--navy);color:var(--white);font:16px/1.6 "Malgun Gothic",sans-serif;word-break:keep-all}a{color:inherit}button{font:inherit;cursor:pointer}button:focus-visible,a:focus-visible{outline:3px solid #a9c9ff;outline-offset:4px}
+header,.switch,.hero,.foot{width:min(1260px,calc(100% - 48px));margin:auto}header{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line)}header a:first-child{background:#fff;padding:9px 13px;border-radius:5px}header img{display:block;width:145px;height:auto}.switch{display:flex;gap:8px;flex-wrap:wrap;padding:18px 0}.switch button{color:var(--white);background:transparent;border:1px solid var(--line);padding:8px 13px;border-radius:5px}.switch button[aria-pressed=true]{background:#e0ebfb;color:#17293e;border-color:#e0ebfb}
+.hero{display:grid;overflow:hidden;border:1px solid var(--line);border-radius:16px;background:var(--panel)}.copy{padding:clamp(23px,5vw,66px);align-self:center}.tag{color:#b1caed;font-weight:700;font-size:14px;margin:0 0 8px}h1{font-size:clamp(29px,4vw,59px);letter-spacing:-.07em;line-height:1.16;margin:0 0 12px}.copy p:last-child{color:var(--muted);margin:0;max-width:43rem}
+.media{position:relative;align-self:center;aspect-ratio:16/9;width:100%;background:#0b1421 url("https://i.ytimg.com/vi/OHTJ2a3ogHE/hqdefault.jpg") center/cover no-repeat}.media iframe{border:0;width:100%;height:100%;display:block}.hero[data-view="film"] .media{grid-row:1}.hero[data-view="film"] .copy{padding-block:clamp(20px,3vw,38px)}.hero[data-view="split"]{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)}.hero[data-view="split"] .media{grid-column:2;grid-row:1}.foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:9px;padding:16px 0 28px;color:var(--muted);font-size:14px}
+@media(max-width:760px){header,.switch,.hero,.foot{width:calc(100% - 28px)}header img{width:119px}.hero[data-view="split"]{grid-template-columns:1fr}.hero[data-view="split"] .media{grid-column:1;grid-row:2}}
+</style></head><body>
+<header><a href="../nain-preview/" aria-label="나인 홈페이지 시안"><img src="../assets/logo.png" alt="Nain 주식회사 나인"></a><a href="https://www.nain.team/">회사 소개</a></header>
+<div class="switch" role="group" aria-label="첫 화면 시안 선택"><button type="button" data-view="film" aria-pressed="true">영상 중심</button><button type="button" data-view="split" aria-pressed="false">제품 설명 중심</button></div>
+<main class="hero" data-view="film"><div class="copy"><p class="tag">쿨윈 · 벡터</p><h1>공기가 흐르는 작업장</h1><p>쿨윈의 급기, 벡터의 배기, 스마트 제어가 한 시스템에서 작동하는 모습을 영상으로 확인하세요.</p></div><div class="media"><iframe id="nain-film" title="나인 쿨윈과 벡터 스마트 환기 시스템 공식 영상" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></main>
+<div class="foot"><span>무음 반복 재생 · 플레이어에서 일시정지 가능</span><a href="https://www.youtube.com/watch?v=OHTJ2a3ogHE">YouTube에서 보기</a></div>
+<script>
+const frame=document.querySelector('#nain-film');
+const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const params=new URLSearchParams({autoplay:reduceMotion?'0':'1',mute:'1',loop:'1',playlist:'OHTJ2a3ogHE',playsinline:'1',rel:'0',enablejsapi:'1',origin:location.origin});
+frame.src='https://www.youtube-nocookie.com/embed/OHTJ2a3ogHE?'+params;
+window.onYouTubeIframeAPIReady=()=>{
+  new YT.Player(frame,{events:{onReady:({target})=>{
+    if(target.getAvailablePlaybackRates().includes(0.75)) target.setPlaybackRate(0.75);
+  }}});
+};
+const api=document.createElement('script');
+api.src='https://www.youtube.com/iframe_api';
+document.head.append(api);
+const hero=document.querySelector('.hero');
+const buttons=[...document.querySelectorAll('.switch button')];
+buttons.forEach(button=>button.addEventListener('click',()=>{
+  hero.dataset.view=button.dataset.view;
+  buttons.forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
+  document.querySelector('h1').textContent=button.dataset.view==='film'?'공기가 흐르는 작업장':'작업장에 맞춘 급기와 배기';
+}));
+</script></body></html>
