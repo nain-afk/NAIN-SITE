@@ -21,6 +21,7 @@ header{position:relative;z-index:1;background:var(--navy);border-bottom:1px soli
 .copy h1{font-size:clamp(32px,4.4vw,62px)}.copy .actions .action{background:#e5efff;color:#172a45;border-color:#e5efff}@media(max-width:680px){.copy h1{font-size:clamp(29px,7.5vw,40px)}}
 .copy h1{white-space:nowrap;font-size:clamp(20px,5.3vw,72px)}@media(max-width:680px){.copy h1{font-size:clamp(15px,6.8vw,40px)}}
 @media(min-width:681px){.airflow-caption{top:51%;width:min(34%,365px)}.airflow-caption span:last-child{line-height:1.75}}@media(max-width:680px){.airflow-caption span:last-child{flex-basis:auto;line-height:1.55}}
+.media-actions{justify-content:space-between}.inquiry{display:inline-flex;flex-wrap:wrap;align-items:baseline;gap:2px 12px;min-height:44px;padding:7px 12px;border:1px solid #8b9db6;border-radius:5px;background:#0e1b2de8;color:#e8f0ff}.inquiry span{font-weight:600}.inquiry strong{font-size:17px;letter-spacing:.01em;color:#fff;white-space:nowrap}.inquiry:hover{border-color:#fff}@media(max-width:680px){.airflow-caption{bottom:87px}.media-actions{gap:8px}.inquiry{gap:1px 8px;padding-inline:8px}}
 </style>
 </head>
 <body>
@@ -30,7 +31,7 @@ header{position:relative;z-index:1;background:var(--navy);border-bottom:1px soli
 <div class="picture" aria-hidden="true"><canvas id="airflow"></canvas></div><div class="shade"></div>
 <div class="copy shell"><p class="eyebrow">쿨윈 · 벡터 스마트 환기</p><h1 id="main-title">작업장에 공기의 길을 열다</h1><p class="lead">쿨윈이 바깥 공기를 식혀 들이고, 벡터가 작업장의 열기를 밖으로 내보냅니다.</p></div>
 <div class="airflow-caption"><span class="airflow-number">01</span><strong>쿨윈 냉방 급기</strong><span>외부 공기가 물이 적셔진 냉각부를 지나면서 열을 잃습니다. 식은 공기는 작업장 안으로 들어옵니다.</span></div>
-<div class="media-actions shell"><button type="button" id="playback">영상 일시정지</button></div>
+<div class="media-actions shell"><a class="inquiry" href="tel:15779812"><span>도입 문의</span><strong>1577-9812</strong></a><button type="button" id="playback">영상 일시정지</button></div>
 </section>
 </main>
 <script>
