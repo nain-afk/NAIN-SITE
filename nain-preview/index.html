@@ -114,27 +114,89 @@ function drawBuilding() {
   for(let i=0;i<4;i++) line([[6.01,4.01,3.68+i*.14],[6.87,4.01,3.68+i*.14]],'#203a4f',1.5);
 }
 
-function drawnPath(points, color, strength, offset) {
-  const screen = points.map(project);
-  const lengths = screen.slice(1).map((point,i)=>Math.hypot(point[0]-screen[i][0],point[1]-screen[i][1]));
-  const total = lengths.reduce((sum,length)=>sum+length,0);
-  context.save();
-  context.globalAlpha = strength * .34;
-  context.setLineDash([5,8]);
-  line(points,color,1.4);
-  context.setLineDash([]);
-  context.globalAlpha = strength;
-  context.shadowColor = color;
-  context.shadowBlur = 11;
-  context.fillStyle = color;
-  for(let i=0;i<16;i++) {
-    let distance = ((elapsed / 5100 + i / 16 + offset) % 1) * total;
-    let segment = 0;
-    while(segment < lengths.length - 1 && distance > lengths[segment]) distance -= lengths[segment++];
-    const a=screen[segment], b=screen[segment+1], t=distance/lengths[segment];
-    const x=a[0]+(b[0]-a[0])*t, y=a[1]+(b[1]-a[1])*t;
+function smoothRoute(points, progress) {
+  const scaled = progress * (points.length - 1);
+  const index = Math.min(Math.floor(scaled), points.length - 2);
+  const t = scaled - index;
+  const [a,b,c,d] = [-1,0,1,2].map(offset => points[Math.max(0,Math.min(points.length-1,index+offset))]);
+  return [0,1].map(axis => .5*((2*b[axis])+(-a[axis]+c[axis])*t+(2*a[axis]-5*b[axis]+4*c[axis]-d[axis])*t*t+(-a[axis]+3*b[axis]-3*c[axis]+d[axis])*t*t*t));
+}
+
+function drawAir(points, color, strength, warm) {
+  const route=points.map(project);
+  const strands=warm?4:5;
+  const flow=(elapsed/(warm?2600:3400))%1;
+  const unit=Math.max(.65,Math.min(scale/44,1.35));
+  const [x0,y0]=route[0], [x1,y1]=route[route.length-1];
+  const gradient=context.createLinearGradient(x0,y0,x1,y1);
+  gradient.addColorStop(0,'rgba('+color+',0)');
+  gradient.addColorStop(.18,'rgba('+color+',.42)');
+  gradient.addColorStop(.58,'rgba('+color+',.65)');
+  gradient.addColorStop(.87,'rgba('+color+',.37)');
+  gradient.addColorStop(1,'rgba('+color+',0)');
+  const wavePoint=(u,strand)=>{
+    const [x,y]=smoothRoute(route,u);
+    const [nx,ny]=smoothRoute(route,Math.min(1,u+.005));
+    const [px,py]=smoothRoute(route,Math.max(0,u-.005));
+    const dx=nx-px,dy=ny-py, length=Math.hypot(dx,dy)||1;
+    const taper=Math.sin(Math.PI*u);
+    const wave=Math.sin(u*(warm?15:10)-flow*Math.PI*2+strand*.49);
+    const offset=(strand*7+wave*(warm?10:6))*unit*taper;
+    return [x-dy/length*offset,y+dx/length*offset];
+  };
+  function traceRibbon(from,to,strand) {
     context.beginPath();
-    context.arc(x,y,i%4===0?3.2:1.8,0,Math.PI*2);
+    for(let i=0;i<=44;i++){
+      const point=wavePoint(from+(to-from)*i/44,strand);
+      if(i===0)context.moveTo(...point);
+      else context.lineTo(...point);
+    }
+  }
+  context.save();
+  context.globalAlpha=strength*.19;
+  context.strokeStyle=gradient;
+  context.lineWidth=26*unit;
+  traceRibbon(0,1,0);
+  context.stroke();
+  for(let strand=0;strand<strands;strand++){
+    const center=strand-(strands-1)/2;
+    context.globalAlpha=strength*(1-Math.abs(center)*.13);
+    context.strokeStyle=gradient;
+    context.lineWidth=(Math.abs(center)<1?2.1:1.2)*unit;
+    traceRibbon(0,1,center);
+    context.stroke();
+  }
+  for(let burst=0;burst<2;burst++){
+    const center=(flow+burst*.5)%1;
+    const from=Math.max(0,center-.14);
+    const to=Math.min(1,center+.12);
+    const [a,b]=[wavePoint(from,0),wavePoint(to,0)];
+    const sheen=context.createLinearGradient(...a,...b);
+    sheen.addColorStop(0,'rgba('+color+',0)');
+    sheen.addColorStop(.7,'rgba('+color+',.77)');
+    sheen.addColorStop(1,'rgba('+color+',0)');
+    context.globalAlpha=strength;
+    context.strokeStyle=sheen;
+    context.lineWidth=2.7*unit;
+    traceRibbon(from,to,warm?.52:-.52);
+    context.stroke();
+  }
+  context.restore();
+}
+
+function drawDust() {
+  context.save();
+  for(let i=0;i<32;i++){
+    const phase=i*2.39996, time=elapsed/1000;
+    const x=1.1+((i*37)%91)/12+Math.sin(phase+time*.34)*.18;
+    const y=.8+((i*29)%61)/12+Math.cos(phase+time*.26)*.13;
+    const z=.45+((i*17)%32)/13+Math.sin(phase+time*.23)*.12;
+    const [sx,sy]=project([x,y,z]);
+    const radius=(i%5===0?2.1:1.25)*Math.max(.7,Math.min(scale/43,1.35));
+    const alpha=.09+.06*(.5+.5*Math.sin(phase+time*.4));
+    context.fillStyle='rgba(218,222,218,'+alpha+')';
+    context.beginPath();
+    context.arc(sx,sy,radius,0,Math.PI*2);
     context.fill();
   }
   context.restore();
@@ -178,8 +240,9 @@ function paint(time) {
     line([[-10,n,-.25],[19,n,-.25]],'#6686a322');
   }
   drawBuilding();
-  drawnPath(cold,'#6ce4ff',step===1?.24:1,0);
-  drawnPath(warm,'#ffc18a',step===0?.24:1,.21);
+  drawDust();
+  drawAir(cold,'92,221,255',step===1?.44:1,false);
+  drawAir(warm,'255,177,111',step===0?.44:1,true);
   if(step===2)markers();
   request=paused?0:requestAnimationFrame(paint);
 }
